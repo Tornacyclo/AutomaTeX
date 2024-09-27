@@ -72,8 +72,7 @@ def main():
     # Loop over each test case
     for t in range(1, T + 1):
         person_city = input().strip()
-        # person, city = person_city.split(' ', 1)  # Split based on the first space
-        person, city, language = person_city.split(' ')
+        person, city, language = person_city.split('  ') # Split based on two spaces
 
         folder_name = sanitize_folder_name(f"{person}_{city.replace(' ', '_')}")
         

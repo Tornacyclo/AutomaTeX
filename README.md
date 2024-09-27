@@ -43,25 +43,26 @@ The script reads from an input file and performs the following operations:
 
 The input is read from a file in the following format:
 
-```plaintext
+```
 T
-N1 C1 L1
-N2 C2 L2
+N1  C1  L1
+N2  C2  L2
 ...
-Nx Cx Lx
+Nx  Cx  Lx
 ```
 
 Where:
 - The first line is the number of test cases T.
 - Each subsequent line consists of the person's name N, city C, and language L (either `EN` or `FR`).
+- The split is based on two spaces.
 
 ### Example Input
 
 ```
 3
-Apolline Copenhagen EN
-Salhi Neuchâtel FR
-Marmiton Delémont FR
+Apolline  Copenhagen  EN
+Salhi  Neuchâtel  FR
+Marmiton  Delémont  FR
 ```
 
 ### Example Execution
