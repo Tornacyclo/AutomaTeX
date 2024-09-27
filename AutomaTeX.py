@@ -42,20 +42,20 @@ def copy_files(folder_name, language):
     
     return tex_dst
 
-def modify_(tex_path, city, person):
+def modify_(**kwargs):
     """Modifies."""
-    with open(tex_path, 'r') as file:
+    with open(kwargs['tex_path'], 'r') as file:
         content = file.read()
 
     # Replace placeholders
-    content = content.replace(r"\setkomavar{city}{}", f"\\setkomavar{{city}}{{{city}}}")
-    content = content.replace(r"\setkomavar{person}{}", f"\\setkomavar{{person}}{{{person}}}")
+    content = content.replace(r"\setkomavar{city}{}", f"\\setkomavar{{city}}{{{kwargs['city']}}}")
+    content = content.replace(r"\setkomavar{person}{}", f"\\setkomavar{{person}}{{{kwargs['person']}}}")
 
     # Write the modified content back to the file
-    with open(tex_path, 'w') as file:
+    with open(kwargs['tex_path'], 'w') as file:
         file.write(content)
     
-    print(f"Modified {tex_path} with the new city and person.")
+    print(f"Modified {kwargs['tex_path']} with the new city and person.")
 
 def compile_tex_file(tex_file_path):
     """Compiles the .tex file using XeLaTeX, MakeIndex, and BibTeX."""
@@ -83,7 +83,7 @@ def main():
         tex_path = copy_files(folder_name, language)
 
         # Modify with variables
-        modify_(tex_path, city, person)
+        modify_(tex_path=tex_path, city=city, person=person)
 
         # Compile both .tex files using XeLaTeX, MakeIndex, and BibTeX
         original_dir = os.getcwd()
